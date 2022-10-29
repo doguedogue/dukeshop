@@ -15,9 +15,6 @@ public class ShopApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        double tax = 0.2;
-        double total = 0.0;
-
         System.out.println("Welcome to Duke Choice Shop");
         Customer c1 = new Customer();
         c1.setName("Pinky");
@@ -30,6 +27,8 @@ public class ShopApp {
 
         Clothing[] items = {item1, item2, new Clothing(), new Clothing()};
 
+        c1.addItems(items);
+        
         item1.setDescription("Blue Jacket");
         item1.setPrice(20.9);
         item1.setSize("M");
@@ -46,26 +45,16 @@ public class ShopApp {
         items[3].setSize("S");
         items[3].setPrice(10.5);
 
-        //System.out.println("Item1" + "," + item1.description + "," + item1.price + "," + item1.size);
-        //System.out.println("Item2" + "," + item2.description + "," + item2.price + "," + item2.size);
-        //total = (item1.price + item2.price * 2 )*(1 + tax);
-        //System.out.println("Total = "+total);
         int measurement = 3;
         c1.setSize(measurement);
         System.out.println("Measurement: " + measurement + " Size: " + c1.getSize());
         System.out.printf("Customer's Name: %s, Size: %s\n", c1.getName(), c1.getSize());
 
-        for (Clothing item : items) {
-            if (c1.getSize().equals(item.getSize())) {
-                //total += item.getPrice() * (1 + tax);
-                total += item.getPrice();
-                System.out.println("Item" + "," + item.getDescription() + "," + item.getPrice() + "," + item.getSize());
-                if (total > 15) {
-                    break;
-                }
-            }
+        for (Clothing item : c1.getItems()) {
+            System.out.println("Item" + "," + item.getDescription() + "," + item.getPrice() + "," + item.getSize());
         }
-        System.out.println("Total = " + total);
+
+        System.out.println("Total = " + c1.getTotalClothingCost());
     }
 
 }

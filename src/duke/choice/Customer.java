@@ -12,6 +12,32 @@ package duke.choice;
 public class Customer {
     private String name;
     private String size;
+    
+    private Clothing[] items;
+    
+    public void addItems(Clothing[] someItem){
+        items = someItem;
+    }
+    public Clothing [] getItems(){
+        return items;
+    }
+    
+    public double getTotalClothingCost(){
+        double total = 0.0;
+        for (Clothing item : items) {
+            //if (c1.getSize().equals(item.getSize())) {
+                //total += item.getPrice() * (1 + tax);
+                total += item.getPrice();
+                System.out.println("Item" + "," + item.getDescription() + "," + item.getPrice() + "," + item.getSize());
+                if (total > 15) {
+                    break;
+                }
+            //}
+        }
+        
+        return total;
+
+    }
 
     /**
      * @return the name
@@ -60,7 +86,7 @@ public class Customer {
                 setSize("L");
                 break;
             default:
-                setSize("X");
+                setSize("XL");
         }
     }
 }

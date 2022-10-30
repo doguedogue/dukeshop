@@ -18,6 +18,8 @@ public class ShopApp {
         System.out.println("Welcome to Duke Choice Shop");
         Customer c1 = new Customer("Pinky", 3);
 
+        System.out.println("Minimum Price: "+Clothing.MIN_PRICE);
+              
         System.out.printf("Customer's Name: %s, Size: %s\n", c1.getName(), c1.getSize());
 
         Clothing item1 = new Clothing("Blue Jacket", 10.5, "S");
@@ -29,8 +31,22 @@ public class ShopApp {
         
         System.out.printf("Customer's Name: %s, Size: %s\n", c1.getName(), c1.getSize());
 
+        int average = 0;
+        int count = 0;
+        
         for (Clothing item : c1.getItems()) {
+            if (item.getSize().equals("L")){
+                count++;
+                average += item.getPrice();
+            }
             System.out.println("Item" + "," + item.getDescription() + "," + item.getPrice() + "," + item.getSize());
+        }
+        
+        try{
+            average = average / count;        
+            System.out.println("Average: "+average);
+        }catch (ArithmeticException e){
+            System.out.println("Don't divide by zero | "+e.getMessage()+" | "+e.getCause());
         }
 
         System.out.println("Total = " + c1.getTotalClothingCost());

@@ -5,6 +5,8 @@
  */
 package duke.choice;
 
+import java.util.Arrays;
+
 /**
  *
  * @author rvilches
@@ -18,8 +20,8 @@ public class ShopApp {
         System.out.println("Welcome to Duke Choice Shop");
         Customer c1 = new Customer("Pinky", 3);
 
-        System.out.println("Minimum Price: "+Clothing.MIN_PRICE);
-              
+        System.out.println("Minimum Price: " + Clothing.MIN_PRICE);
+
         System.out.printf("Customer's Name: %s, Size: %s\n", c1.getName(), c1.getSize());
 
         Clothing item1 = new Clothing("Blue Jacket", 10.5, "S");
@@ -28,37 +30,45 @@ public class ShopApp {
         Clothing[] items = {item1, item2, new Clothing("Green Scarf", 5.0, "S"), new Clothing("Blue T-Shirt", 10.5, "S")};
 
         c1.addItems(items);
-        
+
         System.out.printf("Customer's Name: %s, Size: %s\n", c1.getName(), c1.getSize());
 
         int average = 0;
         int count = 0;
-        
+        System.out.println("*************************");
         for (Clothing item : c1.getItems()) {
-            if (item.getSize().equals("L")){
+            if (item.getSize().equals("L")) {
                 count++;
                 average += item.getPrice();
             }
             System.out.println("Item output " + item);
         }
-        
-        try{
-            average = average / count;        
-            System.out.println("Average: "+average);
-        }catch (ArithmeticException e){
-            System.out.println("Don't divide by zero | "+e.getMessage()+" | "+e.getCause());
+
+        System.out.println("*************************");
+        try {
+            average = average / count;
+            System.out.println("Average: " + average);
+        } catch (ArithmeticException e) {
+            System.out.println("Don't divide by zero | " + e.getMessage() + " | " + e.getCause());
         }
 
         System.out.println("Total = " + c1.getTotalClothingCost());
-        
-        
+
         Clothing[] clothingArray = new Clothing[2];
         clothingArray[0] = new Tailored();
         clothingArray[1] = new Standard();
-        
+
         for (Clothing clothing : clothingArray) {
-            System.out.println("Clase: " + clothing.getClass() +", Price: "+clothing.getPrice());
+            System.out.println("Clase: " + clothing.getClass() + ", Price: " + clothing.getPrice());
         }
+
+        Arrays.sort(c1.getItems());
+        System.out.println("*************************");
+        System.out.println("Sorted Array:");
+        for (Clothing item : c1.getItems()) {
+            System.out.println("Item " + item);
+        }
+
     }
 
 }

@@ -39,7 +39,7 @@ public class ShopApp {
                 count++;
                 average += item.getPrice();
             }
-            System.out.println("Item" + "," + item.getDescription() + "," + item.getPrice() + "," + item.getSize());
+            System.out.println("Item output " + item);
         }
         
         try{
@@ -50,6 +50,15 @@ public class ShopApp {
         }
 
         System.out.println("Total = " + c1.getTotalClothingCost());
+        
+        
+        Clothing[] clothingArray = new Clothing[2];
+        clothingArray[0] = new Tailored();
+        clothingArray[1] = new Standard();
+        
+        for (Clothing clothing : clothingArray) {
+            System.out.println("Clase: " + clothing.getClass() +", Price: "+clothing.getPrice());
+        }
     }
 
 }

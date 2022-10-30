@@ -24,6 +24,9 @@ public class Clothing {
         size = aSize;
     }
 
+    public Clothing() {
+    }
+
     
     public String getDescription() {
         return description;
@@ -47,5 +50,10 @@ public class Clothing {
 
     public void setSize(String size) {
         this.size = size;
+    }
+    
+    @Override
+    public String toString(){
+        return getDescription() + "," + getPrice() + "," + getSize();
     }
 }

@@ -18,8 +18,17 @@ public class Customer {
     public void addItems(Clothing[] someItem){
         items = someItem;
     }
+
+    public Customer(String name) {
+        this.name = name;
+    }
     public Clothing [] getItems(){
         return items;
+    }
+
+    public Customer(String name, int measurement) {
+        this.name = name;
+        setSize(measurement);
     }
     
     public double getTotalClothingCost(){

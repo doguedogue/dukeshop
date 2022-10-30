@@ -18,6 +18,13 @@ public class Clothing {
     public final double TAX = 0.2;
     public final double MIN_PRICE = 10.0;
 
+    public Clothing(String description, double price, String aSize) {
+        this.description = description;
+        this.price = price;
+        size = aSize;
+    }
+
+    
     public String getDescription() {
         return description;
     }
